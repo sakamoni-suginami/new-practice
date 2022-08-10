@@ -76,7 +76,8 @@ return [
      *   You should treat it as extremely sensitive data.
      */
     'Security' => [
-        'salt' => env('SECURITY_SALT'),
+        'salt' => env('SECURITY_SALT',
+    'dfc123c6c22d84f4bc12273f3df67c6ae55009696e4126b36ac2f755778faccc’'),
     ],
 
     /*
@@ -177,12 +178,12 @@ return [
      *   breathing room to complete logging or error handling.
      */
     'Error' => [
-        'errorLevel' => E_ALL,
-        'exceptionRenderer' => ExceptionRenderer::class,
-        'skipLog' => [],
-        'log' => true,
-        'trace' => true,
+        'ignoredDeprecationPaths' => [
+            'vendors/company/contacts/*',
+            'src/Models/*',
+        ]
     ],
+
 
     /**
      * Debugger configuration
